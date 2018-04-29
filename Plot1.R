@@ -1,0 +1,5 @@
+NEI <- readRDS("summarySCC_PM25.rds")
+emissionsAggregate <- aggregate(list(Emissions = NEI$Emissions), list(year = NEI$year), sum)
+png("plot1.png", width=480, height=480) 
+barplot(height=emissionsAggregate$Emissions, names.arg=emissionsAggregate$year, xlab="Year", ylab="Emission",main="Total PM2.5 emissions for the years 1999-2008")
+dev.off()
